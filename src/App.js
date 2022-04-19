@@ -1,13 +1,17 @@
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Router from "./router";
+import store from "./store";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Router />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <Router />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

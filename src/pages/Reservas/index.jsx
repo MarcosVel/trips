@@ -32,7 +32,7 @@ function Reservas() {
           <img src={reserve.image} alt={reserve.title} />
           <strong>{reserve.title}</strong>
           <div id="amount">
-            <button onClick={() => decrementAmount(reserve)} className={reserve.amount < 2 && "minimum"}>
+            <button onClick={() => decrementAmount(reserve)} className={reserve.amount < 2 ? "minimum" : undefined}>
               <MdRemoveCircle size={22} />
             </button>
             <span>Pessoas:</span>

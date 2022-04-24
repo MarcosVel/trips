@@ -7,9 +7,20 @@ function* addToReserve({ id }) {
     state.reserve.find(trip => trip.id === id)
   );
 
-  if (tripExist) {
-    const amount = tripExist.amount + 1;
+  const stock = yield call(api.get, `/stock/${id}`);
 
+  const stockAmount = stock.data.amount;
+
+  const stockReserved = tripExist ? tripExist.amount : 0;
+
+  const amount = stockReserved + 1;
+
+  if(amount > stockAmount) {
+    alert('Estoque de viagem esgotado')
+    return;
+  }
+
+  if (tripExist) {
     yield put(updateAmountReserve(id, amount));
   } else {
     const response = yield call(api.get, `trips/${id}`);

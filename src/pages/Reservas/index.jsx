@@ -3,7 +3,7 @@ import { MdAddCircle, MdDelete, MdRemoveCircle } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeReserve,
-  updateAmountReserve,
+  updateAmountRequest
 } from "../../store/modules/reserve/action";
 import "./style.css";
 
@@ -16,11 +16,11 @@ function Reservas() {
   };
 
   const decrementAmount = reserve => {
-    dispatch(updateAmountReserve(reserve.id, reserve.amount - 1));
+    dispatch(updateAmountRequest(reserve.id, reserve.amount - 1));
   };
 
   const incrementAmount = reserve => {
-    dispatch(updateAmountReserve(reserve.id, reserve.amount + 1));
+    dispatch(updateAmountRequest(reserve.id, reserve.amount + 1));
   };
 
   return (
